@@ -121,6 +121,14 @@ django = ">=2.2,<4.0"
 docs = ["sphinx (>=2.4,<3.0)", "sphinx_rtd_theme (>=0.4.3,<0.5.0)", "m2r (>=0.2.1,<0.3.0)"]
 
 [[package]]
+category = "main"
+description = "A Django auth backend that works with email or username"
+name = "django-yeouia"
+optional = false
+python-versions = ">=3.4"
+version = "2.0.0"
+
+[[package]]
 category = "dev"
 description = "the modular source code checker: pep8 pyflakes and co"
 name = "flake8"
@@ -446,7 +454,7 @@ python-versions = "*"
 version = "0.30.0"
 
 [metadata]
-content-hash = "ed021b44b1eb68eade5bca3b4ed844cf3e36e023f7704ba3856b254d009d6233"
+content-hash = "47233a3d1eead3a8aaf73286c9160b96c5867d8555667f56c71cf8a82fe98cbc"
 lock-version = "1.0"
 python-versions = "^3.8"
 
@@ -495,6 +503,10 @@ django-autoslug = [
 django-bootstrap4 = [
     {file = "django-bootstrap4-2.2.0.tar.gz", hash = "sha256:1c0a931b4245a0dcd5051ea1b244ac130a328374ce8e85254c75eb072a737201"},
     {file = "django_bootstrap4-2.2.0-py3-none-any.whl", hash = "sha256:32cc0f914ace4cef935c0d3f786dde2a52f0ea1be72153f6e356c0aa8f3925e1"},
+]
+django-yeouia = [
+    {file = "django-yeouia-2.0.0.tar.gz", hash = "sha256:c6843be54720d2c953de7a4bfecc1b4cfb07e067107c28d9e7c53178d25cda18"},
+    {file = "django_yeouia-2.0.0-py3-none-any.whl", hash = "sha256:4b168d47aed43eb8a6d5d0be2f57a5eef6a934118117beed76988fcc57c154af"},
 ]
 flake8 = [
     {file = "flake8-3.8.4-py2.py3-none-any.whl", hash = "sha256:749dbbd6bfd0cf1318af27bf97a14e28e5ff548ef8e5b1566ccfb25a11e7c839"},

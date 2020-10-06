@@ -47,6 +47,8 @@ services:
     command: ./entrypoint.sh test
     env_file:
       - .env
+    environment:
+      - EMAIL_HOST_PASSWORD=dummy
     depends_on:
       - postgres
 
