@@ -6,10 +6,15 @@
 <dl class="row">
   <dt class="col-sm-3">Name</dt><dd class="col-sm-9">{{ object.name }}</dd>
   <dt class="col-sm-3">slug</dt><dd class="col-sm-9">{{ object.slug }}</dd>
-  <dt class="col-sm-3">inputs</dt><dd class="col-sm-9"><ul>
+  <dt class="col-sm-3">inputs</dt><dd class="col-sm-9">
+    <ul>
       {% for obj in object.inputs.all %}
       <li>{{ obj }}</li>
       {% endfor %}
-    </ul></dd>
+    </ul>
+  </dd>
+  <dt class="col-sm-3">URL</dt<dd class="col-sm-9">
+    {{ request.scheme }}://{{ request.get_host }}{% url 'mergics:ics' request.user.username object.slug %}
+  </dd>
 </dl>
 {% endblock %}
