@@ -78,6 +78,6 @@ def ics(request, username, slug):
     user = get_object_or_404(User, username=username)
     output = get_object_or_404(models.ICSOutput, user=user, slug=slug)
     response = HttpResponse(content_type='text/calendar')
-    response['Content-Disposition'] = f'attachment; filename="{user}-{slug}.csv"'
+    response['Content-Disposition'] = f'attachment; filename="{user}-{slug}.ics"'
     response.write(output.to_ical())
     return response
