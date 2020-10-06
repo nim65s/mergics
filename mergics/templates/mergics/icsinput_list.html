@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Input ICS</h1>
+
+<table class="table">
+
+  <tr>
+    <th>URL</th>
+    <!--<th>Update</th>-->
+    <!--<th>Delete</th>-->
+  </tr>
+
+  {% for object in object_list %}
+  <tr>
+    <td>{{ object.url }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<a class="btn btn-success" href="{% url 'mergics:icsinput-add' %}">Add</a>
+{% endblock %}

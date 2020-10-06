@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Output ICS</h1>
+
+<dl class="row">
+  <dt class="col-sm-3">Name</dt><dd class="col-sm-9">{{ object.name }}</dd>
+  <dt class="col-sm-3">slug</dt><dd class="col-sm-9">{{ object.slug }}</dd>
+  <dt class="col-sm-3">inputs</dt><dd class="col-sm-9"><ul>
+      {% for obj in object.inputs.all %}
+      <li>{{ obj }}</li>
+      {% endfor %}
+    </ul></dd>
+</dl>
+{% endblock %}

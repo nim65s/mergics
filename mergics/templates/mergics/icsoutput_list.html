@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Output ICS</h1>
+
+<table class="table">
+
+  <tr>
+    <th>Name</th>
+    <th>Inputs</th>
+    <!--<th>Update</th>-->
+    <!--<th>Delete</th>-->
+    <th>Embed</th>
+  </tr>
+
+  {% for object in object_list %}
+  <tr>
+    <td>{{ object.get_link }}</td>
+    <td>{{ object.inputs.count }}</td>
+    <td>{{ request.scheme }}://{{ request.get_host }}{% url 'mergics:ics' request.user.username object.slug %}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<a class="btn btn-success" href="{% url 'mergics:icsoutput-add' %}">Add</a>
+{% endblock %}

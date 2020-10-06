@@ -2,13 +2,13 @@ from django.conf import settings
 from django.db import models
 
 import requests
-from icalendar import Calendar
-
 from autoslug import AutoSlugField  # type: ignore
+from icalendar import Calendar
 from ndh.models import Links
 
 
-class ICSInput(models.Model):
+class ICSInput(Links, models.Model):
+    absolute_url_detail = False
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     url = models.URLField()
 
@@ -41,7 +41,7 @@ class ICSOutput(Links, models.Model):
     def to_cal(self) -> Calendar:
         """Create a Calendar merging the inputs."""
         cal = Calendar()
-        cal.add('prodid', f'-//{self.user} - {self.name}//{self.slug}.{self.user.username}.mergics//')
+        cal.add('prodid', f'-//{self.user} - {self.name}//{self.user.username}-{self.slug}.mergics//')
         cal.add('version', '2.0')
         for calendar in self.inputs.all():
             for component in calendar.from_ical().walk():

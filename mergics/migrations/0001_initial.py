@@ -26,6 +26,7 @@ class Migration(migrations.Migration):
             options={
                 'unique_together': {('user', 'url')},
             },
+            bases=(ndh.models.Links, models.Model),
         ),
         migrations.CreateModel(
             name='ICSOutput',
