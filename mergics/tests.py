@@ -79,6 +79,9 @@ class MergICSTests(TestCase):
         r = self.client.get(reverse('mergics:icsoutput', kwargs={'slug': 'toto'}))
         self.assertIn(URLS[0], r.content.decode())
 
+        # Check user can edit ICSOutput objects
+        r = self.client.get(reverse('mergics:icsoutput-update', kwargs={'slug': 'toto'}))
+
         # Check the holiday are available in the generated ICS
         r = self.client.get(reverse('mergics:ics', kwargs={'username': 'testv', 'slug': 'toto'}))
         self.assertIn('SUMMARY:Ascension', r.content.decode())

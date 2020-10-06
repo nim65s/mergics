@@ -12,7 +12,7 @@ urlpatterns = [
     path('outputs/list', views.OutputListView.as_view(), name='icsoutputs'),
     path('outputs/create', views.OutputCreateView.as_view(), name='icsoutput-add'),
     path('outputs/detail/<slug>', views.OutputDetailView.as_view(), name='icsoutput'),
-    # path('outputs/update/<slug>', views.OutputUpdateView.as_view(), name='icsoutput-update'),
+    path('outputs/update/<slug>', views.OutputUpdateView.as_view(), name='icsoutput-update'),
     # path('outputs/delete/<slug>', views.OutputDeleteView.as_view(), name='icsoutput-delete'),
     path('public/<str:username>-<slug:slug>.ics', views.ics, name='ics'),
 ]

@@ -2,7 +2,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
-from django.views.generic import CreateView, DetailView, ListView
+from django.views.generic import CreateView, DetailView, ListView, UpdateView
 
 from ndh.mixins import NDHFormMixin
 
@@ -12,9 +12,19 @@ from . import forms, models
 # Helpers
 
 
-class UserListView(LoginRequiredMixin, ListView):
+class UserQuerysetMixin:
     def get_queryset(self):
-        return self.model._default_manager.filter(user=self.request.user)
+        # return self.model._default_manager.filter(user=self.request.user)
+        return super().get_queryset().filter(user=self.request.user)
+
+
+class UserFormKwargsMixin:
+    def get_form_kwargs(self):
+        return {'user': self.request.user, **super().get_form_kwargs()}
+
+
+class UserListView(LoginRequiredMixin, UserQuerysetMixin, ListView):
+    pass
 
 
 class UserCreateView(NDHFormMixin, LoginRequiredMixin, CreateView):
@@ -26,9 +36,12 @@ class UserCreateView(NDHFormMixin, LoginRequiredMixin, CreateView):
         return HttpResponseRedirect(self.get_success_url())
 
 
-class UserDetailView(LoginRequiredMixin, DetailView):
-    def get_queryset(self):
-        return super().get_queryset().filter(user=self.request.user)
+class UserUpdateView(NDHFormMixin, LoginRequiredMixin, UserQuerysetMixin, UpdateView):
+    pass
+
+
+class UserDetailView(LoginRequiredMixin, UserQuerysetMixin, DetailView):
+    pass
 
 
 #########
@@ -48,11 +61,13 @@ class OutputListView(UserListView):
     model = models.ICSOutput
 
 
-class OutputCreateView(UserCreateView):
+class OutputCreateView(UserFormKwargsMixin, UserCreateView):
     form_class = forms.OutputForm
 
-    def get_form_kwargs(self):
-        return {'user': self.request.user, **super().get_form_kwargs()}
+
+class OutputUpdateView(UserFormKwargsMixin, UserUpdateView):
+    form_class = forms.OutputForm
+    model = models.ICSOutput
 
 
 class OutputDetailView(UserDetailView):
