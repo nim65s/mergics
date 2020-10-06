@@ -8,7 +8,7 @@
   <tr>
     <th>Name</th>
     <th>Inputs</th>
-    <!--<th>Update</th>-->
+    <th>Update</th>
     <!--<th>Delete</th>-->
     <th>Embed</th>
   </tr>
@@ -18,6 +18,7 @@
     <td>{{ object.get_link }}</td>
     <td>{{ object.inputs.count }}</td>
     <td>{{ request.scheme }}://{{ request.get_host }}{% url 'mergics:ics' request.user.username object.slug %}</td>
+    <td><a href="{% url 'mergics:icsoutput-update' slug=object.slug %}">Update</a></td>
   </tr>
   {% endfor %}
 </table>
