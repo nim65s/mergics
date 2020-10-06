@@ -75,10 +75,23 @@ class MergICSTests(TestCase):
         r = self.client.get(reverse('mergics:icsoutputs'))
         self.assertIn('toto', r.content.decode())
 
-        # And the url of on the detail
+        # And the url on the detail
         r = self.client.get(reverse('mergics:icsoutput', kwargs={'slug': 'toto'}))
         self.assertIn(URLS[0], r.content.decode())
 
         # Check the holiday are available in the generated ICS
         r = self.client.get(reverse('mergics:ics', kwargs={'username': 'testv', 'slug': 'toto'}))
         self.assertIn('SUMMARY:Ascension', r.content.decode())
+
+        # ############
+        # Second User
+
+        User.objects.create_user(username='testw', password='testw')
+        self.client.login(username='testw', password='testw')
+
+        # Check the input of the first user is not visible
+        r = self.client.get(reverse('mergics:icsinputs'))
+        self.assertNotIn(URLS[0], r.content.decode())
+
+        r = self.client.get(reverse('mergics:icsoutput-add'))
+        self.assertNotIn(URLS[0], r.content.decode())
