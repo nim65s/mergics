@@ -1,0 +1,9 @@
+{% extends 'ndh.html' %}
+{% load ndh %}
+
+{% block pagetitle %}Test Project - {% block title %}{{ title }}{% endblock %}{% endblock %}
+{% block sitetitle %}TestProject{% endblock %}
+
+{% block navbarleft %}
+{% comment %}{% navbar_item 'mergics:index' 'Chat' %}{% endcomment %}
+{% endblock %}

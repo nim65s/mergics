@@ -1,0 +1,55 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:11-alpine
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - "${CHATONS_ROOT_DIR:-/srv/chatons}/mergics/sql:/var/lib/postgresql/data"
+  memcached:
+    image: memcached:alpine
+    restart: unless-stopped
+  gunicorn:
+    build: .
+    command: ./entrypoint.sh gunicorn
+    restart: unless-stopped
+    volumes:
+      - "${CHATONS_ROOT_DIR:-/srv/chatons}/mergics/srv:/srv"
+    env_file:
+      - .env
+    environment:
+      - DB=postgres
+      - MEMCACHED=True
+    networks:
+      - web
+      - default
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.mergics-gunicorn.rule: "Host(`mergics.${DOMAIN_NAME:-localhost}`)"
+    depends_on:
+      - postgres
+      - memcached
+      - nginx
+  nginx:
+    image: nim65s/ndh:nginx
+    restart: unless-stopped
+    volumes:
+      - "${CHATONS_ROOT_DIR:-/srv/chatons}/mergics/srv/mergics:/srv:ro"
+    networks:
+      - web
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.mergics-nginx.rule: "Host(`mergics.${DOMAIN_NAME:-localhost}`) && PathPrefix(`/static`, `/media`)"
+  test:
+    build: .
+    command: ./entrypoint.sh test
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+
+networks:
+  web:
+    external: true

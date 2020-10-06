@@ -1,0 +1,24 @@
+name: CI
+on: push
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run django tests
+        run: |
+          docker network create web
+          echo SECRET_KEY=secret_key >> .env
+          echo POSTGRES_PASSWORD=postgres_password >> .env
+          docker-compose up --build --exit-code-from test test
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - name: setup
+        run: pip install flake8 yapf
+      - name: flake8
+        run: flake8 .
+      - name: yapf
+        run: yapf -dr .
