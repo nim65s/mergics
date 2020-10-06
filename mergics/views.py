@@ -6,7 +6,7 @@ from django.views.generic import CreateView, DetailView, ListView
 
 from ndh.mixins import NDHFormMixin
 
-from . import models
+from . import forms, models
 
 ###########
 # Helpers
@@ -49,8 +49,10 @@ class OutputListView(UserListView):
 
 
 class OutputCreateView(UserCreateView):
-    model = models.ICSOutput
-    fields = ['name', 'inputs']
+    form_class = forms.OutputForm
+
+    def get_form_kwargs(self):
+        return {'user': self.request.user, **super().get_form_kwargs()}
 
 
 class OutputDetailView(UserDetailView):
