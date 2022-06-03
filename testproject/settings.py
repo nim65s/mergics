@@ -112,8 +112,13 @@ EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", f"majo@{HOSTNAME}")
 EMAIL_HOST_PASSWORD = os.environ["EMAIL_HOST_PASSWORD"]
 DEFAULT_FROM_EMAIL = f"{PROJECT_VERBOSE} <{EMAIL_HOST_USER}>"
 SERVER_EMAIL = f"Server {DEFAULT_FROM_EMAIL}"
-REPLY_TO = f"webmaster@{HOSTNAME}"
-ADMINS = [(f"{PROJECT_VERBOSE} Webmasters", "webmaster@{HOSTNAME}")]
+REPLY_TO = os.environ.get("ADMIN_MAIL", f"webmaster@{HOSTNAME}")
+ADMINS = [
+    (
+        f"{PROJECT_VERBOSE} Webmasters",
+        os.environ.get("ADMIN_MAIL", "webmaster@{HOSTNAME}"),
+    )
+]
 
 if os.environ.get("MEMCACHED", "False").lower() == "true":
     CACHES = {
