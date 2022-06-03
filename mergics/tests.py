@@ -33,7 +33,8 @@ class MergICSTests(TestCase):
 
         # Check the inputs have been added
         self.assertEqual(models.ICSOutput.objects.first().inputs.count(), 2)
-        # Check the output has the right number of components (ignore the "vcalendar" component)
+        # Check the output has the right number of components
+        # (ignore the "vcalendar" component)
         self.assertEqual(
             len(models.ICSOutput.objects.first().to_cal().walk()) - 1, components
         )
