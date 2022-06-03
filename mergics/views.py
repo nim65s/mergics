@@ -20,7 +20,7 @@ class UserQuerysetMixin:
 
 class UserFormKwargsMixin:
     def get_form_kwargs(self):
-        return {'user': self.request.user, **super().get_form_kwargs()}
+        return {"user": self.request.user, **super().get_form_kwargs()}
 
 
 class UserListView(LoginRequiredMixin, UserQuerysetMixin, ListView):
@@ -54,7 +54,7 @@ class InputListView(UserListView):
 
 class InputCreateView(UserCreateView):
     model = models.ICSInput
-    fields = ['url']
+    fields = ["url"]
 
 
 class OutputListView(UserListView):
@@ -77,7 +77,7 @@ class OutputDetailView(UserDetailView):
 def ics(request, username, slug):
     user = get_object_or_404(User, username=username)
     output = get_object_or_404(models.ICSOutput, user=user, slug=slug)
-    response = HttpResponse(content_type='text/calendar')
-    response['Content-Disposition'] = f'attachment; filename="{user}-{slug}.ics"'
+    response = HttpResponse(content_type="text/calendar")
+    response["Content-Disposition"] = f'attachment; filename="{user}-{slug}.ics"'
     response.write(output.to_ical())
     return response
