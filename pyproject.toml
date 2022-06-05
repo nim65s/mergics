@@ -6,7 +6,7 @@ authors = ["Guilhem Saurel <guilhem.saurel@laas.fr>"]
 license = "BSD-2-Clause"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.10"
 ndh = "^3.10.4"
 icalendar = "^4.0.7"
 psycopg2 = "^2.8.6"
