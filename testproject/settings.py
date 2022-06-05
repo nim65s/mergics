@@ -25,7 +25,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.humanize",
     "django.contrib.sites",
-    "bootstrap4",
+    "django_bootstrap5",
     "mergics",
 ]
 
@@ -129,3 +129,4 @@ if os.environ.get("MEMCACHED", "False").lower() == "true":
     }
 
 AUTHENTICATION_BACKENDS = ["yeouia.backends.YummyEmailOrUsernameInsensitiveAuth"]
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
