@@ -8,8 +8,8 @@ services:
       - .env
     volumes:
       - "${CHATONS_ROOT_DIR:-/srv/chatons}/mergics/sql:/var/lib/postgresql/data"
-  memcached:
-    image: memcached:alpine
+  redis:
+    image: redis:alpine
     restart: unless-stopped
   gunicorn:
     build: .
@@ -21,7 +21,7 @@ services:
       - .env
     environment:
       - DB=postgres
-      - MEMCACHED=True
+      - REDIS=True
     networks:
       - web
       - default
@@ -30,7 +30,7 @@ services:
       traefik.http.routers.mergics-gunicorn.rule: "Host(`mergics.${DOMAIN_NAME:-localhost}`)"
     depends_on:
       - postgres
-      - memcached
+      - redis
       - nginx
   nginx:
     image: nim65s/ndh
