@@ -16,7 +16,7 @@ services:
     command: ./entrypoint.sh gunicorn
     restart: unless-stopped
     volumes:
-      - "${CHATONS_ROOT_DIR:-/srv/chatons}/mergics/srv:/srv"
+      - "${CHATONS_ROOT_DIR:-/srv/chatons}/testproject/srv:/srv"
     env_file:
       - .env
     environment:
@@ -36,7 +36,7 @@ services:
     image: nim65s/ndh
     restart: unless-stopped
     volumes:
-      - "${CHATONS_ROOT_DIR:-/srv/chatons}/mergics/srv/mergics:/srv:ro"
+      - "${CHATONS_ROOT_DIR:-/srv/chatons}/testproject/srv/testproject:/srv:ro"
     networks:
       - web
     labels:
