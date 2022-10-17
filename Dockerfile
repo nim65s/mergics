@@ -1,23 +1,22 @@
-FROM python:3.10-slim
+FROM python:3.10
 
 EXPOSE 8000
 
 WORKDIR /app
 
-ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1 PIP_NO_CACHE_DIR=off PIP_DISABLE_PIP_VERSION_CHECK=on \
-    POETRY_VIRTUALENVS_IN_PROJECT=true PATH=/root/.poetry/bin:/app/.venv/bin:$PATH
+ENV PYTHONUNBUFFERED=1 PATH=/root/.local/bin:$PATH
 
 ADD poetry.lock  pyproject.toml ./
 
-RUN apt-get update -qqy \
- && apt-get install -qqy \
+RUN --mount=type=cache,sharing=locked,target=/var/cache/apt \
+    --mount=type=cache,sharing=locked,target=/var/lib/apt \
+    apt-get update -y && DEBIAN_FRONTEND=noninteractive apt-get install -qqy \
     curl \
     gcc \
     libpq-dev \
     netcat \
- && curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python \
- && poetry install --no-root \
- && apt-get autoremove -qqy gcc \
- && rm -rf /var/lib/apt/lists/* /root/.poetry
+ && curl -sSL https://install.python-poetry.org | python - \
+ && poetry install \
+ && apt-get autoremove -qqy gcc
 
 ADD . .
