@@ -1,4 +1,4 @@
-FROM python:3.10
+FROM python:3.11
 
 EXPOSE 8000
 
@@ -9,20 +9,17 @@ ENV PYTHONUNBUFFERED=1 PATH=/root/.local/bin:$PATH
 RUN --mount=type=cache,sharing=locked,target=/var/cache/apt \
     --mount=type=cache,sharing=locked,target=/var/lib/apt \
     --mount=type=cache,sharing=locked,target=/root/.cache \
-    apt-get update -y && DEBIAN_FRONTEND=noninteractive apt-get install -qqy \
-    curl \
+    apt-get update -y && DEBIAN_FRONTEND=noninteractive apt-get install -qqy --no-install-recommends \
     gcc \
     libpq-dev \
     netcat \
  && python -m pip install -U pip \
- && curl -sSL https://install.python-poetry.org | python - \
- && python -m pip install \
-    gunicorn \
-    psycopg2 \
- && apt-get autoremove -qqy gcc
+ && python -m pip install -U pipx \
+ && python -m pipx install poetry
 
 ADD pyproject.toml poetry.lock ./
-
-RUN poetry install --no-dev --no-root --no-interaction --no-ansi
+RUN --mount=type=cache,sharing=locked,target=/root/.cache \
+    python -m venv .venv \
+ && poetry install --with prod --no-root --no-interaction --no-ansi
 
 ADD . .
