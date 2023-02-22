@@ -875,20 +875,20 @@ files = [
 
 [[package]]
 name = "yeouia"
-version = "3.0.1"
+version = "4.0.0"
 description = "Yummy Email Or Username Insensitive Auth model backend for Django"
 category = "main"
 optional = false
 python-versions = ">=3.8,<4.0"
 files = [
-    {file = "yeouia-3.0.1-py3-none-any.whl", hash = "sha256:dbda7311f93f88d16d88f39615a0563c70dfbcf16b11bbb0556e9fcbba07606d"},
-    {file = "yeouia-3.0.1.tar.gz", hash = "sha256:859eb39c1cc96f024243e7445a94e213dbe8e7807f85719f84437cb8f9fa2523"},
+    {file = "yeouia-4.0.0-py3-none-any.whl", hash = "sha256:e81ad0535cfa825d1c35cb95c927688cbd07b59a0b4f20aa0307ee8b72761d0c"},
+    {file = "yeouia-4.0.0.tar.gz", hash = "sha256:5b89d805dbd8dc3e209e87f9abe1465043175233cc689ddda858d392d929f2fa"},
 ]
 
 [package.dependencies]
-Django = ">=2.2"
+Django = ">=2.2,<5.0"
 
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "ea561b41e4539865dda4edce6be2279138d69e150f39601bf22fa22c8fc65036"
+content-hash = "bf4c3878831fffd904f7b364cad14c8b374091d1d78ff586b4c9e7fb7c831138"
