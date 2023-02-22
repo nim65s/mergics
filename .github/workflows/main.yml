@@ -10,6 +10,7 @@ jobs:
         with:
           context: .
           tags: nim65s/mergics
+          load: true
       - name: Run django tests
         run: |
           docker network create web
