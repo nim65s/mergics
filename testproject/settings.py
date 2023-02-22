@@ -94,7 +94,6 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = os.environ.get("LANGUAGE_CODE", "fr-FR")
 TIME_ZONE = os.environ.get("TIME_ZONE", "Europe/Paris")
 USE_I18N = True
-USE_L10N = True
 USE_TZ = True
 
 SITE_ID = int(os.environ.get("SITE_ID", 1))
