@@ -12,6 +12,7 @@ services:
     image: redis:alpine
     restart: unless-stopped
   gunicorn:
+    image: nim65s/mergics
     build: .
     command: ./entrypoint.sh gunicorn
     restart: unless-stopped
@@ -43,6 +44,7 @@ services:
       traefik.enable: "true"
       traefik.http.routers.mergics-nginx.rule: "Host(`mergics.${DOMAIN_NAME:-localhost}`) && PathPrefix(`/static`, `/media`)"
   test:
+    image: nim65s/mergics
     build: .
     command: ./entrypoint.sh test
     env_file:
