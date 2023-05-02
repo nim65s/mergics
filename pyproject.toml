@@ -7,7 +7,7 @@ license = "BSD-2-Clause"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-ndh = "^6.0.0"
+ndh = "^6.2.0"
 icalendar = "^5.0.4"
 requests = "^2.29.0"
 gunicorn = "^20.0.4"
