@@ -12,7 +12,7 @@ RUN --mount=type=cache,sharing=locked,target=/var/cache/apt \
     apt-get update -y && DEBIAN_FRONTEND=noninteractive apt-get install -qqy --no-install-recommends \
     gcc \
     libpq-dev \
-    netcat \
+    netcat-openbsd \
  && python -m pip install -U pip \
  && python -m pip install -U pipx \
  && python -m pipx install poetry
