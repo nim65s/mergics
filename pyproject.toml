@@ -19,7 +19,7 @@ ipython = "^8"
 optional = true
 
 [tool.poetry.group.dev.dependencies]
-flake8 = "^6.0.0"
+flake8 = "^6.1.0"
 black = "^23.3.0"
 
 [tool.poetry.group.prod]
