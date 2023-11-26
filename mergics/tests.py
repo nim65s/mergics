@@ -6,7 +6,7 @@ from . import models
 
 URLS = [
     "https://www.mozilla.org/media/caldata/FrenchHolidays.ics",
-    "http://cache.media.education.gouv.fr/ics/Calendrier_Scolaire_Zone_C.ics",
+    "https://fr.ftp.opendatasoft.com/openscol/fr-en-calendrier-scolaire/Zone-C.ics",
 ]
 
 
