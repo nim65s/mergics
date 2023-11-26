@@ -6,13 +6,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 PROJECT = "testproject"
 PROJECT_VERBOSE = "Test Project"
 
+DEBUG = os.environ.get("DEBUG", "True").lower() == "true"
+if DEBUG:
+    SECRET_KEY = "django-insecure-un&^-yd2(xdo#_@or@obzh)trtweg))^oegpor8@=$srjplaz1"
+else:  # pragma: no cover
+    SECRET_KEY = os.environ["SECRET_KEY"]
+
 DOMAIN_NAME = os.environ.get("DOMAIN_NAME", "localhost")
 HOSTNAME = os.environ.get("ALLOWED_HOST", f"{PROJECT}.{DOMAIN_NAME}")
 ALLOWED_HOSTS = [HOSTNAME, f"{HOSTNAME}:8000"]
-ALLOWED_HOSTS += [f"www.{host}" for host in ALLOWED_HOSTS]
-
-SECRET_KEY = os.environ["SECRET_KEY"]
-DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+CSRF_TRUSTED_ORIGINS = [
+    ("http://" if DEBUG else "https://") + host for host in ALLOWED_HOSTS
+]
 
 INSTALLED_APPS = [
     PROJECT,
