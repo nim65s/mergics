@@ -28,15 +28,15 @@ class MergICSTests(TestCase):
             ics_input.save()
             out.inputs.add(ics_input)
             components += len(
-                list(c for c in ics_input.from_ical().walk() if c.name != "VCALENDAR")
+                list(c for c in ics_input.from_ical().walk() if c.name == "VEVENT")
             )
 
         # Check the inputs have been added
         self.assertEqual(models.ICSOutput.objects.first().inputs.count(), 2)
         # Check the output has the right number of components
-        # (ignore the "vcalendar" component)
+        # (ignore the VCALENDAR VTIMEZONE DAYLIGHT STANDARD events)
         self.assertEqual(
-            len(models.ICSOutput.objects.first().to_cal().walk()) - 1, components
+            len(models.ICSOutput.objects.first().to_cal().walk()) - 6, components
         )
 
     def test_views(self):
