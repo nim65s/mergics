@@ -49,7 +49,7 @@ class ICSOutput(Links, models.Model):
         cal.add("version", "2.0")
         for calendar in self.inputs.all():
             for component in calendar.from_ical().walk():
-                if component.name != "VCALENDAR" and (
+                if component.name == "VEVENT" and (
                     self.filtre == ""
                     or "SUMMARY" not in component
                     or self.filtre in component["SUMMARY"].to_ical().decode()

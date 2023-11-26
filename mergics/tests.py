@@ -34,9 +34,9 @@ class MergICSTests(TestCase):
         # Check the inputs have been added
         self.assertEqual(models.ICSOutput.objects.first().inputs.count(), 2)
         # Check the output has the right number of components
-        # (ignore the VCALENDAR VTIMEZONE DAYLIGHT STANDARD events)
+        # (ignore the VCALENDAR event)
         self.assertEqual(
-            len(models.ICSOutput.objects.first().to_cal().walk()) - 6, components
+            len(models.ICSOutput.objects.first().to_cal().walk()) - 1, components
         )
 
     def test_views(self):
