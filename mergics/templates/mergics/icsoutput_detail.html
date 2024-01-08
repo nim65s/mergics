@@ -4,9 +4,9 @@
 <h1>Output ICS</h1>
 
 <dl class="row">
-  <dt class="col-sm-3">Name</dt><dd class="col-sm-9">{{ object.name }}</dd>
+  <dt class="col-sm-3">name</dt><dd class="col-sm-9">{{ object.name }}</dd>
   <dt class="col-sm-3">slug</dt><dd class="col-sm-9">{{ object.slug }}</dd>
-  <dt class="col-sm-3">URL</dt><dd class="col-sm-9">
+  <dt class="col-sm-3">url</dt><dd class="col-sm-9">
     {{ request.scheme }}://{{ request.get_host }}{% url 'mergics:ics' request.user.username object.slug %}
   </dd>
   <dt class="col-sm-3">inputs</dt><dd class="col-sm-9">
@@ -16,6 +16,7 @@
       {% endfor %}
     </ul>
   </dd>
+  <dt class="col-sm-3">filtre</dt><dd class="col-sm-9">{{ object.filtre }}</dd>
 </dl>
 
 <a class="btn btn-info" href="{% url 'mergics:icsoutput-update' slug=object.slug %}">Update</a>
