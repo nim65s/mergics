@@ -30,7 +30,7 @@ class ICSOutput(Links, models.Model):
     name = models.CharField(max_length=200)
     slug = AutoSlugField(populate_from="name")
     inputs = models.ManyToManyField(ICSInput)
-    filtre = models.CharField(max_length=100, blank=True)
+    filter = models.CharField(max_length=100, blank=True)
 
     class Meta:
         unique_together = ["user", "slug"]
@@ -50,9 +50,9 @@ class ICSOutput(Links, models.Model):
         for calendar in self.inputs.all():
             for component in calendar.from_ical().walk():
                 if component.name == "VEVENT" and (
-                    self.filtre == ""
+                    self.filter == ""
                     or "SUMMARY" not in component
-                    or self.filtre in component["SUMMARY"].to_ical().decode()
+                    or self.filter in component["SUMMARY"].to_ical().decode()
                 ):
                     cal.add_component(component)
         return cal
