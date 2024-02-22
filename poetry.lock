@@ -443,18 +443,18 @@ files = [
 
 [[package]]
 name = "ndh"
-version = "6.5.3"
+version = "6.9.1"
 description = "Nim's Django Helpers"
 optional = false
 python-versions = ">=3.10,<4.0"
 files = [
-    {file = "ndh-6.5.3-py3-none-any.whl", hash = "sha256:71fa8f8f85d55820b9274499bfe11a537887de63a287667f50039648b8179c7a"},
-    {file = "ndh-6.5.3.tar.gz", hash = "sha256:ed5cc745bd9d5dc555b1ac34d411e403c6607350ac7fc7c33473953712e1fbed"},
+    {file = "ndh-6.9.1-py3-none-any.whl", hash = "sha256:804dbaae4a0f991930adaeaa29e7e787032bdd6d9f85182ee73059d111defa78"},
+    {file = "ndh-6.9.1.tar.gz", hash = "sha256:9da7530b56bc0ebbeaa7363435dcedaa6fb77dd512fcd9487e1bb5689b659c40"},
 ]
 
 [package.dependencies]
 django-autoslug = ">=1.9.9,<2.0.0"
-django-bootstrap5 = ">=23.3,<24.0"
+django-bootstrap5 = ">=23.4,<24.0"
 
 [[package]]
 name = "packaging"
@@ -826,4 +826,4 @@ Django = ">=2.2,<5.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "dc66150bcc70b2e74e7db96f8cd1fd5cfea2f5650214027dd1b511995b356b82"
+content-hash = "8f37d7f6a2196ab586bc12e0c999ca94c19b3943629aa32231e7b19bdb20e3bf"
