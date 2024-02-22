@@ -28,7 +28,7 @@ class MergICSTests(TestCase):
             ics_input.save()
             out.inputs.add(ics_input)
             components += len(
-                c for c in ics_input.from_ical().walk() if c.name == "VEVENT"
+                [c for c in ics_input.from_ical().walk() if c.name == "VEVENT"],
             )
 
         # Check the inputs have been added
