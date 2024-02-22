@@ -1,3 +1,5 @@
+from typing import ClassVar
+
 from django.conf import settings
 from django.db import models
 
@@ -13,7 +15,7 @@ class ICSInput(Links, models.Model):
     url = models.URLField()
 
     class Meta:
-        unique_together = ["user", "url"]
+        unique_together: ClassVar = ["user", "url"]
 
     def __str__(self) -> str:
         """Show the url of this input."""
@@ -33,7 +35,7 @@ class ICSOutput(Links, models.Model):
     filter = models.CharField(max_length=100, blank=True)
 
     class Meta:
-        unique_together = ["user", "slug"]
+        unique_together: ClassVar = ["user", "slug"]
 
     def __str__(self) -> str:
         """Get the name of the instance."""

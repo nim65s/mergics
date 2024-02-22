@@ -69,7 +69,7 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / DB,
-    }
+    },
 }
 if DB == "postgres":
     DATABASES["default"].update(
@@ -121,7 +121,7 @@ ADMINS = [
     (
         f"{PROJECT_VERBOSE} Webmasters",
         os.environ.get("ADMIN_MAIL", "webmaster@{HOSTNAME}"),
-    )
+    ),
 ]
 
 if os.environ.get("REDIS", "False").lower() == "true":
@@ -129,7 +129,7 @@ if os.environ.get("REDIS", "False").lower() == "true":
         "default": {
             "BACKEND": "django.core.cache.backends.redis.RedisCache",
             "LOCATION": "redis://redis:6379",
-        }
+        },
     }
 
 AUTHENTICATION_BACKENDS = ["yeouia.backends.YummyEmailOrUsernameInsensitiveAuth"]

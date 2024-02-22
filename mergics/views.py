@@ -1,3 +1,5 @@
+from typing import ClassVar
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.http import HttpResponse, HttpResponseRedirect
@@ -54,7 +56,7 @@ class InputListView(UserListView):
 
 class InputCreateView(UserCreateView):
     model = models.ICSInput
-    fields = ["url"]
+    fields: ClassVar = ["url"]
 
 
 class OutputListView(UserListView):

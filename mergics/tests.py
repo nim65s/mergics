@@ -28,7 +28,7 @@ class MergICSTests(TestCase):
             ics_input.save()
             out.inputs.add(ics_input)
             components += len(
-                list(c for c in ics_input.from_ical().walk() if c.name == "VEVENT")
+                c for c in ics_input.from_ical().walk() if c.name == "VEVENT"
             )
 
         # Check the inputs have been added
@@ -36,7 +36,8 @@ class MergICSTests(TestCase):
         # Check the output has the right number of components
         # (ignore the VCALENDAR event)
         self.assertEqual(
-            len(models.ICSOutput.objects.first().to_cal().walk()) - 1, components
+            len(models.ICSOutput.objects.first().to_cal().walk()) - 1,
+            components,
         )
 
     def test_views(self):
@@ -74,7 +75,8 @@ class MergICSTests(TestCase):
         # Check user can add ICSOutput objects
         count = models.ICSOutput.objects.count()
         self.client.post(
-            reverse("mergics:icsoutput-add"), {"name": "Toto", "inputs": [1]}
+            reverse("mergics:icsoutput-add"),
+            {"name": "Toto", "inputs": [1]},
         )
         self.assertEqual(models.ICSOutput.objects.count(), count + 1)
 
@@ -88,12 +90,12 @@ class MergICSTests(TestCase):
 
         # Check user can edit ICSOutput objects
         r = self.client.get(
-            reverse("mergics:icsoutput-update", kwargs={"slug": "toto"})
+            reverse("mergics:icsoutput-update", kwargs={"slug": "toto"}),
         )
 
         # Check the holiday are available in the generated ICS
         r = self.client.get(
-            reverse("mergics:ics", kwargs={"username": "testv", "slug": "toto"})
+            reverse("mergics:ics", kwargs={"username": "testv", "slug": "toto"}),
         )
         self.assertIn("SUMMARY:Ascension", r.content.decode())
 
