@@ -15,7 +15,7 @@ icalendar = "^5.0.11"
 ipython = "^8.22.1"
 ndh = "^6.9.1"
 python = "^3.10"
-redis = "^5.0.1"
+redis = "^5.0.2"
 requests = "^2.31.0"
 yeouia = "^4.0.0"
 
