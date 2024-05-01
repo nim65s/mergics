@@ -10,7 +10,7 @@ name = "mergics"
 version = "0.1.0"
 
 [tool.poetry.dependencies]
-gunicorn = "^21.2.0"
+gunicorn = "^22.0.0"
 icalendar = "^5.0.12"
 ipython = "^8.23.0"
 ndh = "^6.9.1"
@@ -29,7 +29,7 @@ ruff = "^0.3.5"
 optional = true
 
 [tool.poetry.group.prod.dependencies]
-gunicorn = "^21.2.0"
+gunicorn = "^22.0.0"
 psycopg2 = "^2.9.9"
 
 [tool.ruff]
