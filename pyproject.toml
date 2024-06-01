@@ -12,7 +12,7 @@ version = "0.1.0"
 [tool.poetry.dependencies]
 gunicorn = "^21.2.0"
 icalendar = "^5.0.12"
-ipython = "^8.23.0"
+ipython = "^8.25.0"
 ndh = "^6.9.1"
 python = "^3.10"
 redis = "^5.0.3"
