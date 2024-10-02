@@ -16,4 +16,4 @@ jobs:
           docker network create web
           echo SECRET_KEY=secret_key >> .env
           echo POSTGRES_PASSWORD=postgres_password >> .env
-          docker-compose up --exit-code-from test test
+          docker compose up --exit-code-from test test
