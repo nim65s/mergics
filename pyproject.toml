@@ -23,7 +23,7 @@ yeouia = "^4.0.0"
 optional = true
 
 [tool.poetry.group.dev.dependencies]
-ruff = "^0.6.8"
+ruff = "^0.7.2"
 
 [tool.poetry.group.prod]
 optional = true
