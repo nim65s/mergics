@@ -310,13 +310,13 @@ files = [
 
 [[package]]
 name = "ipython"
-version = "8.32.0"
+version = "8.33.0"
 description = "IPython: Productive Interactive Computing"
 optional = false
 python-versions = ">=3.10"
 files = [
-    {file = "ipython-8.32.0-py3-none-any.whl", hash = "sha256:cae85b0c61eff1fc48b0a8002de5958b6528fa9c8defb1894da63f42613708aa"},
-    {file = "ipython-8.32.0.tar.gz", hash = "sha256:be2c91895b0b9ea7ba49d33b23e2040c352b33eb6a519cca7ce6e0c743444251"},
+    {file = "ipython-8.33.0-py3-none-any.whl", hash = "sha256:aa5b301dfe1eaf0167ff3238a6825f810a029c9dad9d3f1597f30bd5ff65cc44"},
+    {file = "ipython-8.33.0.tar.gz", hash = "sha256:4c3e36a6dfa9e8e3702bd46f3df668624c975a22ff340e96ea7277afbd76217d"},
 ]
 
 [package.dependencies]
@@ -715,4 +715,4 @@ Django = ">=2.2,<5.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "8a372798ba6eaf15aa166130b2b313ce3a842247d03430e23f38584ffca0c3f4"
+content-hash = "661334e34eadfa856413ededc4bd74d7838de9f67d6536f953ea421a2bfe1558"
