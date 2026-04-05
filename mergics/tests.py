@@ -5,7 +5,7 @@ from django.urls import reverse
 from . import models
 
 URLS = [
-    "https://www.mozilla.org/media/caldata/FrenchHolidays.ics",
+    "https://mozorg.cdn.mozilla.net/media/caldata/FrenchHolidays.ics",
     "https://fr.ftp.opendatasoft.com/openscol/fr-en-calendrier-scolaire/Zone-C.ics",
 ]
 
