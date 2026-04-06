@@ -402,14 +402,14 @@ traitlets = "*"
 
 [[package]]
 name = "ndh"
-version = "6.10.1"
+version = "6.11.0"
 description = "Nim's Django Helpers"
 optional = false
 python-versions = ">=3.10"
 groups = ["main"]
 files = [
-    {file = "ndh-6.10.1-py3-none-any.whl", hash = "sha256:4bf682192fc778a98123a7e7371b9c909f49505d8a8d0b63ba26cffa5307cd54"},
-    {file = "ndh-6.10.1.tar.gz", hash = "sha256:a8490562644671ed99e96e8617a33b5f6b71f5630089bb34eef3ba72cc254da2"},
+    {file = "ndh-6.11.0-py3-none-any.whl", hash = "sha256:9035408b760ce8a44f794df09f004a13c64439a155e02c0de3739645a24828c0"},
+    {file = "ndh-6.11.0.tar.gz", hash = "sha256:9595f81fa4e6b06f05e0d356a03751210d0a7d4ae08aeac67054f4c3a34bc8be"},
 ]
 
 [package.dependencies]
@@ -760,4 +760,4 @@ Django = ">=2.2,<5.0"
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.10"
-content-hash = "b5efa6192384bb7aed20c9c6b9d432a4812d8508070e846d1a2dcb32314901b0"
+content-hash = "c9e0f0f44fdb43e580905b7927cb0284af3a92b4725819cef009ce8312202d4e"
