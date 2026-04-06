@@ -297,22 +297,20 @@ tornado = ["tornado (>=0.2)"]
 
 [[package]]
 name = "icalendar"
-version = "6.3.1"
-description = "iCalendar parser/generator"
+version = "7.0.3"
+description = "RFC 5545 compatible parser and generator of iCalendar files"
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.10"
 groups = ["main"]
 files = [
-    {file = "icalendar-6.3.1-py3-none-any.whl", hash = "sha256:7ea1d1b212df685353f74cdc6ec9646bf42fa557d1746ea645ce8779fdfbecdd"},
-    {file = "icalendar-6.3.1.tar.gz", hash = "sha256:a697ce7b678072941e519f2745704fc29d78ef92a2dc53d9108ba6a04aeba466"},
+    {file = "icalendar-7.0.3-py3-none-any.whl", hash = "sha256:8c9fea6d3a89671bba8b6938d8565b4d0ec465c6a2796ef0f92790dcb9e627cd"},
+    {file = "icalendar-7.0.3.tar.gz", hash = "sha256:95027ece087ab87184d765f03761f25875821f74cdd18d3b57e9c868216d8fde"},
 ]
 
 [package.dependencies]
 python-dateutil = "*"
-tzdata = "*"
-
-[package.extras]
-test = ["coverage", "hypothesis", "pytest", "pytz"]
+typing-extensions = {version = ">=4.10,<5.0", markers = "python_version < \"3.13\""}
+tzdata = ">=2025.3"
 
 [[package]]
 name = "idna"
@@ -689,27 +687,27 @@ test = ["argcomplete (>=3.0.3)", "mypy (>=1.7.0)", "pre-commit", "pytest (>=7.0,
 
 [[package]]
 name = "typing-extensions"
-version = "4.9.0"
-description = "Backported and Experimental Type Hints for Python 3.8+"
+version = "4.15.0"
+description = "Backported and Experimental Type Hints for Python 3.9+"
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.9"
 groups = ["main"]
-markers = "python_version < \"3.12\""
+markers = "python_version < \"3.13\""
 files = [
-    {file = "typing_extensions-4.9.0-py3-none-any.whl", hash = "sha256:af72aea155e91adfc61c3ae9e0e342dbc0cba726d6cba4b6c72c1f34e47291cd"},
-    {file = "typing_extensions-4.9.0.tar.gz", hash = "sha256:23478f88c37f27d76ac8aee6c905017a143b0b1b886c3c9f66bc2fd94f9f5783"},
+    {file = "typing_extensions-4.15.0-py3-none-any.whl", hash = "sha256:f0fa19c6845758ab08074a0cfa8b7aecb71c999ca73d62883bc25cc018c4e548"},
+    {file = "typing_extensions-4.15.0.tar.gz", hash = "sha256:0cea48d173cc12fa28ecabc3b837ea3cf6f38c6d1136f85cbaaf598984861466"},
 ]
 
 [[package]]
 name = "tzdata"
-version = "2024.1"
+version = "2026.1"
 description = "Provider of IANA time zone data"
 optional = false
 python-versions = ">=2"
 groups = ["main"]
 files = [
-    {file = "tzdata-2024.1-py2.py3-none-any.whl", hash = "sha256:9068bc196136463f5245e51efda838afa15aaeca9903f49050dfa2679db4d252"},
-    {file = "tzdata-2024.1.tar.gz", hash = "sha256:2674120f8d891909751c38abcdfd386ac0a5a1127954fbc332af6b5ceae07efd"},
+    {file = "tzdata-2026.1-py2.py3-none-any.whl", hash = "sha256:4b1d2be7ac37ceafd7327b961aa3a54e467efbdb563a23655fbfe0d39cfc42a9"},
+    {file = "tzdata-2026.1.tar.gz", hash = "sha256:67658a1903c75917309e753fdc349ac0efd8c27db7a0cb406a25be4840f87f98"},
 ]
 
 [[package]]
@@ -760,4 +758,4 @@ Django = ">=2.2,<5.0"
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.10"
-content-hash = "c9e0f0f44fdb43e580905b7927cb0284af3a92b4725819cef009ce8312202d4e"
+content-hash = "5d8c8f6d77ab21f44c8027ba5f78d150bf9dc4805a6c13e489ca7054c26b3187"
